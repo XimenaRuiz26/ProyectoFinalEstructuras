@@ -222,12 +222,12 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <RadioButton fx:id="rBtnSi1" layoutX="607.0" layoutY="289.0" mnemonicParsing="false" text="Si">
+                        <RadioButton fx:id="rBtnSiUltimaA" layoutX="607.0" layoutY="289.0" mnemonicParsing="false" text="Si">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="rBtnNo1" layoutX="673.0" layoutY="289.0" mnemonicParsing="false" text="No">
+                        <RadioButton fx:id="rBtnUltimaA" layoutX="673.0" layoutY="289.0" mnemonicParsing="false" text="No">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
@@ -237,12 +237,12 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <RadioButton fx:id="rBtnSi11" layoutX="452.0" layoutY="346.0" mnemonicParsing="false" text="Si">
+                        <RadioButton fx:id="rBtnSiFinal" layoutX="452.0" layoutY="346.0" mnemonicParsing="false" text="Si">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="rBtnNo11" layoutX="518.0" layoutY="346.0" mnemonicParsing="false" text="No">
+                        <RadioButton fx:id="rBtnNoFinal" layoutX="518.0" layoutY="346.0" mnemonicParsing="false" text="No">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>

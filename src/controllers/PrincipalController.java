@@ -164,6 +164,18 @@ public class PrincipalController {
 
 	@FXML
 	private RadioButton rBtnNo;
+	
+    @FXML
+    private RadioButton rBtnSiUltimaA;
+
+    @FXML
+    private RadioButton rBtnUltimaA;
+
+    @FXML
+    private RadioButton rBtnSiFinal;
+
+    @FXML
+    private RadioButton rBtnNoFinal;
 
 	@FXML
 	private Button btnCrearActividad;
@@ -171,6 +183,8 @@ public class PrincipalController {
 	ObservableList<String> listaProcesosAData = FXCollections.observableArrayList();
 
 	private ToggleGroup grupoOpciones = new ToggleGroup();
+	private ToggleGroup grupoOpciones2 = new ToggleGroup();
+	private ToggleGroup grupoOpciones3 = new ToggleGroup();
 
 	private ObservableList<String> getListaProcesosAData() {
 		listaProcesosAData.addAll(modelFactoryController.obtenerProcesosA());
@@ -201,14 +215,24 @@ public class PrincipalController {
 		String preceder = comboBoxActividades.getSelectionModel().getSelectedItem();
 		RadioButton radioButtonSeleccionado = (RadioButton) grupoOpciones.getSelectedToggle();
 		String seleccion = radioButtonSeleccionado.getText();
+		RadioButton radioButtonSeleccionado2 = (RadioButton) grupoOpciones2.getSelectedToggle();
+		String seleccionUltima = radioButtonSeleccionado2.getText();
+		RadioButton radioButtonSeleccionado3 = (RadioButton) grupoOpciones3.getSelectedToggle();
+		String seleccionFinal = radioButtonSeleccionado3.getText();
 
-		if (datosValidosA(nombreA, descripcion, proceso, seleccion)) {
+		if (datosValidosA(nombreA, descripcion, proceso, seleccion, seleccionUltima, seleccionFinal)) {
 			if (preceder == null) {
-				modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion);
-				mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad",
-						AlertType.INFORMATION);
-				limpiarCamposA();
-				obtenerPosiblesActividades();
+				if(modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion)){
+					mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad",
+							AlertType.INFORMATION);
+					limpiarCamposA();
+					obtenerPosiblesActividades();
+				}else {
+					mostrarMensaje("Notificacion creación", "Actividad no creada",
+							"Ya existe una actividad con el nombre " + nombreA + " No se puede crear",
+							AlertType.INFORMATION);
+					limpiarCamposA();
+				}
 			} else {
 				if (modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion)) {
 					mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad",
@@ -218,6 +242,32 @@ public class PrincipalController {
 					obtenerPosiblesActividades();
 
 				} else {
+					mostrarMensaje("Notificacion creación", "Actividad no creada",
+							"Ya existe una actividad con el nombre " + nombreA + " No se puede crear",
+							AlertType.INFORMATION);
+					limpiarCamposA();
+				}
+			}
+			if(preceder == null && seleccionUltima == null){
+				if(modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion)){
+					mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad al final",
+							AlertType.INFORMATION);
+					limpiarCamposA();
+					obtenerPosiblesActividades();
+				}else {
+					mostrarMensaje("Notificacion creación", "Actividad no creada",
+							"Ya existe una actividad con el nombre " + nombreA + " No se puede crear",
+							AlertType.INFORMATION);
+					limpiarCamposA();
+				}
+			}
+			if(preceder== null && seleccionFinal== null){
+				if(modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso,seleccion)){
+					mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad al final",
+							AlertType.INFORMATION);
+					limpiarCamposA();
+					obtenerPosiblesActividades();
+				}else{
 					mostrarMensaje("Notificacion creación", "Actividad no creada",
 							"Ya existe una actividad con el nombre " + nombreA + " No se puede crear",
 							AlertType.INFORMATION);
@@ -247,7 +297,7 @@ public class PrincipalController {
 		tableActividades.setItems(getListaActividadesCBData(proceso));
 	}
 
-	private boolean datosValidosA(String nombre, String descripcion, String proceso, String seleccion) {
+	private boolean datosValidosA(String nombre, String descripcion, String proceso, String seleccion, String seleccionUltima, String seleccionFinal) {
 		if (nombre.equals("")) {
 			return false;
 		}
@@ -258,6 +308,12 @@ public class PrincipalController {
 			return false;
 		}
 		if (seleccion.equals("")) {
+			return false;
+		}
+		if (seleccionUltima.equals("")) {
+			return false;
+		}
+		if (seleccionFinal.equals("")) {
 			return false;
 		}
 		if (grupoOpciones.getSelectedToggle() == null) {
@@ -524,6 +580,10 @@ public class PrincipalController {
 		comboBoxProcesosA.setOnAction(this::filtrarActividades);
 		rBtnSi.setToggleGroup(grupoOpciones);
 		rBtnNo.setToggleGroup(grupoOpciones);
+		rBtnSiUltimaA.setToggleGroup(grupoOpciones2);
+		rBtnUltimaA.setToggleGroup(grupoOpciones2);
+		rBtnSiFinal.setToggleGroup(grupoOpciones3);
+		rBtnNoFinal.setToggleGroup(grupoOpciones3);
 
 		this.columnProceso.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 

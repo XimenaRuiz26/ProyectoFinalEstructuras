@@ -256,4 +256,9 @@ public class ModelFactoryController {
 		return restaurante.crearTarea(nombreP, descripcion, proceso, actividad, seleccion, duracionMin);
 	}
 
+	public boolean crearActividadFinal(String nombreA, String descripcion, String proceso, String seleccion) {
+		return restaurante.crearActividadFinal(nombreA, descripcion, proceso, seleccion);
+		
+	}
+
 }
