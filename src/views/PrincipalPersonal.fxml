@@ -90,47 +90,47 @@
                            </font>
                         </Text>
                         <ComboBox fx:id="comboBoxActividades" layoutX="386.0" layoutY="144.0" prefHeight="13.0" prefWidth="221.0" promptText="Actividades" style="-fx-background-radius: 30 30 30 30; -fx-background-color: f5f2ee; -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0); -fx-text-fill: #999999;" />
-                        <Text fill="#196f3d" layoutX="29.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre de la tarea:">
+                        <Text fill="#196f3d" layoutX="31.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre de la tarea:">
                            <font>
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="txtNombreTarea" layoutX="341.0" layoutY="239.0" prefHeight="31.0" prefWidth="281.0" promptText="Recepción de pedidos" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
+                        <TextField fx:id="txtNombreTarea" layoutX="343.0" layoutY="268.0" prefHeight="31.0" prefWidth="281.0" promptText="Recepción de pedidos" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
                         </TextField>
-                        <Text fill="#196f3d" layoutX="30.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la descripción de la tarea:">
+                        <Text fill="#196f3d" layoutX="32.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la descripción de la tarea:">
                            <font>
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="txtDuracionMin" layoutX="201.0" layoutY="356.0" prefHeight="43.0" prefWidth="192.0" promptText="805588" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
+                        <TextField fx:id="txtDuracionMin" layoutX="203.0" layoutY="385.0" prefHeight="43.0" prefWidth="192.0" promptText="805588" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
                         </TextField>
-                        <Text fill="#196f3d" layoutX="29.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duración minima:">
+                        <Text fill="#196f3d" layoutX="31.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duración minima:">
                            <font>
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="txtDescripcionTarea" layoutX="367.0" layoutY="302.0" prefHeight="43.0" prefWidth="331.0" promptText="Area encargada" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
+                        <TextField fx:id="txtDescripcionTarea" layoutX="369.0" layoutY="331.0" prefHeight="43.0" prefWidth="331.0" promptText="Area encargada" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
                         </TextField>
-                        <Text fill="#196f3d" layoutX="30.0" layoutY="511.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Tarea obligatoria?">
+                        <Text fill="#196f3d" layoutX="22.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Tarea obligatoria?">
                            <font>
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <RadioButton fx:id="rBtnSi" layoutX="231.0" layoutY="488.0" mnemonicParsing="false" text="Si">
+                        <RadioButton fx:id="rBtnSi" layoutX="225.0" layoutY="460.0" mnemonicParsing="false" text="Si">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="rBtnNo" layoutX="297.0" layoutY="488.0" mnemonicParsing="false" text="No">
+                        <RadioButton fx:id="rBtnNo" layoutX="299.0" layoutY="460.0" mnemonicParsing="false" text="No">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
@@ -140,6 +140,16 @@
                               <Image url="@../imagenes/grifo.png" />
                            </image>
                         </ImageView>
+                        <Text fill="#196f3d" layoutX="33.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Insertar en posicion determinada?">
+                           <font>
+                              <Font name="Tw Cen MT" size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="txtDuracionMin1" layoutX="377.0" layoutY="196.0" prefHeight="23.0" prefWidth="47.0" promptText="2" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
+                           <font>
+                              <Font name="Tw Cen MT" size="23.0" />
+                           </font>
+                        </TextField>
                      </children>
                   </AnchorPane>
                </content>
