@@ -104,6 +104,7 @@ public class PrincipalPersonalController {
 		tableTareas.getItems().clear();
 		tableTareas.setItems(getListaTareasData(actividad));
 	}
+	
 
 	@FXML
 	void crearTareaEvent(ActionEvent event) {
@@ -199,16 +200,32 @@ public class PrincipalPersonalController {
 	private Label labelDuracionMaxT;
 
 	@FXML
-	private ComboBox<?> comboBoxProcesosT;
+	private ComboBox<String> comboBoxProcesosT;
 
 	@FXML
-	private ComboBox<?> comboBoxActividadesT;
+	private ComboBox<String> comboBoxActividadesT;
 
 	@FXML
-	private TableView<?> tableTareasMostrar;
+	private TableView<Tarea> tableTareasMostrar;
 
 	@FXML
-	private TableColumn<?, ?> columnTareaMostrar;
+	private TableColumn<Tarea, String> columnTareaMostrar;
+	
+	private Tarea tareaSeleccionada;
+	
+	private void filtrarActividadesT(ActionEvent event) {
+		String proceso = comboBoxProcesosT.getSelectionModel().getSelectedItem();
+		getListaActividadesCBData(proceso);
+		comboBoxActividadesT.setItems(getListaActividadesCBData(proceso));
+	}
+	
+	private void filtrarTareasT(ActionEvent event){
+		String actividad = comboBoxActividadesT.getSelectionModel().getSelectedItem();
+		tableTareasMostrar.getItems().clear();
+		tableTareasMostrar.setItems(getListaTareasData(actividad));
+	}
+	
+	//---------------------------------
 
 	@FXML
 	private ImageView flechaRegresar;
@@ -238,10 +255,36 @@ public class PrincipalPersonalController {
 		comboBoxProceso.setItems(nombresProcesos);
 		comboBoxProceso.setOnAction(this::filtrarActividades);
 		comboBoxActividades.setOnAction(this::filtrarTareas);
+		comboBoxProcesosT.setItems(nombresProcesos);
+		comboBoxProcesosT.setOnAction(this::filtrarActividadesT);
+		comboBoxActividadesT.setOnAction(this::filtrarTareasT);
+		
+		
 		rBtnSi.setToggleGroup(grupoOpciones);
 		rBtnNo.setToggleGroup(grupoOpciones);
 		this.columnTarea.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+		this.columnTareaMostrar.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+		tableTareasMostrar.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+
+			tareaSeleccionada = newSelection;
+
+			mostrarInformacionTarea(tareaSeleccionada);
+		});
 	}
+
+	
+	private void mostrarInformacionTarea(Tarea tareaSeleccionada2) {
+		labelNombreT.setText(tareaSeleccionada2.getNombre());
+		labelDescripcionT.setText(tareaSeleccionada2.getDescripcion());
+		labelDuracionMaxT.setText(Integer.toString(tareaSeleccionada2.getDuracionMin()+10)+" min");
+		labelDuracionMinT.setText(Integer.toString(tareaSeleccionada2.getDuracionMin())+" min");
+		if(tareaSeleccionada2.isObligatoria()==true){
+			labeObligatoriaT.setText("Si");
+		}else{
+			labeObligatoriaT.setText("No");
+		}
+	}
+
 	
 	public void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
 
