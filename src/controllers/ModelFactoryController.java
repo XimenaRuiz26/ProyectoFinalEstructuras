@@ -251,4 +251,9 @@ public class ModelFactoryController {
 		return restaurante.traerInfoActividad2(actividad1);
 	}
 
+	public boolean crearTarea(String nombreP, String descripcion, String proceso, String actividad, String seleccion,
+			String duracionMin) {
+		return restaurante.crearTarea(nombreP, descripcion, proceso, actividad, seleccion, duracionMin);
+	}
+
 }

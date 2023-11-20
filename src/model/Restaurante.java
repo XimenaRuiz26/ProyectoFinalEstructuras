@@ -316,4 +316,19 @@ public class Restaurante {
 		return info;
 	}
 
+	public boolean crearTarea(String nombreP, String descripcion, String proceso2, String actividad, String seleccion,
+			String duracionMin) {
+		Nodo<Proceso> actual = listaProcesos.getNodoPrimero();
+
+		while (actual != null) {
+			Proceso proceso = (Proceso) actual.getValorNodo();
+			if(proceso.getNombre().equals(proceso2)){
+				return proceso.crearTarea(nombreP, descripcion, actividad, seleccion, duracionMin);
+			}
+			actual = actual.getSiguienteNodo();
+		}
+
+		return false;
+	}
+
 }

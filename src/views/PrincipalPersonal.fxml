@@ -120,16 +120,6 @@
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
                         </TextField>
-                        <Text fill="#196f3d" layoutX="24.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duración maxima:">
-                           <font>
-                              <Font name="Tw Cen MT" size="24.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="txtDuracionMax" layoutX="201.0" layoutY="419.0" prefHeight="43.0" prefWidth="192.0" promptText="805588" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
-                           <font>
-                              <Font name="Tw Cen MT" size="23.0" />
-                           </font>
-                        </TextField>
                         <Text fill="#196f3d" layoutX="30.0" layoutY="511.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Tarea obligatoria?">
                            <font>
                               <Font name="Tw Cen MT" size="24.0" />

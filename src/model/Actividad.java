@@ -1,8 +1,10 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import structures.Cola;
+import structures.Lista;
 import structures.Nodo;
 
 public class Actividad {
@@ -155,6 +157,50 @@ public class Actividad {
 	    	System.out.println("No hay tareas");
 	    }
 	    return listaTareas;
+	}
+
+	public boolean crearTarea(String nombreP, String descripcion2, String seleccion, String duracionMin) {
+		Tarea tarea = new Tarea();
+		tarea.setNombre(nombreP);
+		tarea.setDescripcion(descripcion2);
+		tarea.setDuracionMin(Integer.parseInt(duracionMin));
+		tarea.setObligatoria(verificarObligatoria(seleccion));
+		if (tareas == null) {
+			tareas = new Cola<Tarea>();
+		}
+		if (verificarTarea(nombreP) == true) {
+			return false;
+		} else {
+			tareas.encolar(tarea);
+			tareas.imprimir();
+			return true;
+		}
+	}
+	
+	private boolean verificarTarea(String nombreA) {
+	    if (nombreA == null || tareas.estaVacia()) {
+	        return false;
+	    }
+
+	    Nodo<Tarea> actual = tareas.getPrimero();
+	    while (actual != null) {
+	        Tarea tarea = actual.getValorNodo();
+	        if (tarea != null && tarea.getNombre().equals(nombreA)) {
+	            return true;
+	        }
+	        actual = actual.getSiguienteNodo();
+	    }
+
+	    return false;
+	}
+
+	private boolean verificarObligatoria(String seleccion) {
+		if (seleccion.equals("Si")) {
+			return true;
+		} else if (seleccion.equals("No")) {
+			return false;
+		}
+		return false;
 	}
 	
 	

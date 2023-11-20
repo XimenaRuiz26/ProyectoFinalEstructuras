@@ -300,4 +300,19 @@ public class Proceso {
 		return info;
 	}
 
+	public boolean crearTarea(String nombreP, String descripcion2, String actividad2, String seleccion,
+			String duracionMin) {
+		Nodo<Actividad> actual = actividades.getNodoPrimero();
+
+		while (actual != null) {
+			Actividad actividad = (Actividad) actual.getValorNodo();
+			if (actividad.getNombre().equals(actividad2)) {
+				return actividad.crearTarea(nombreP, descripcion2, seleccion, duracionMin);
+			}
+			actual = actual.getSiguienteNodo();
+		}
+
+		return false;
+	}
+
 }
