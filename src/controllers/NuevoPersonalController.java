@@ -21,6 +21,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 
 public class NuevoPersonalController {
@@ -55,6 +57,15 @@ public class NuevoPersonalController {
 
     @FXML
     private Button btnRegistrarse;
+    
+    @FXML
+    private ImageView flechaRegresarEvent;
+
+    @FXML
+    void flechaRegresarEvent(MouseEvent event) {
+
+    }
+    
 
     @FXML
     void RegistrarseEvent(ActionEvent event) {

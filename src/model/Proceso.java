@@ -315,4 +315,21 @@ public class Proceso {
 		return false;
 	}
 
+	public boolean crearActividadFinal(String nombreA, String descripcion2, String seleccion) {
+		Actividad actividad = new Actividad();
+		actividad.setNombre(nombreA);
+		actividad.setDescripcion(descripcion2);
+		actividad.setObligatoria(verificarObligatoria(seleccion));
+		if (actividades == null) {
+			actividades = new Lista<Actividad>();
+		}
+		if (verificarActividad(nombreA) == true) {
+			return false;
+		} else {
+			actividades.agregarfinal(actividad);
+			imprimirLista();
+			return true;
+		}
+	}
+
 }

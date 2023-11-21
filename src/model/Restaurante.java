@@ -331,4 +331,18 @@ public class Restaurante {
 		return false;
 	}
 
+	public boolean crearActividadFinal(String nombreA, String descripcion, String proceso2, String seleccion) {
+		Nodo<Proceso> actual = listaProcesos.getNodoPrimero();
+
+		while (actual != null) {
+			Proceso proceso = (Proceso) actual.getValorNodo();
+			if(proceso.getNombre().equals(proceso2)){
+				return proceso.crearActividadFinal(nombreA, descripcion,seleccion);
+			}
+			actual = actual.getSiguienteNodo();
+		}
+
+		return false;
+	}
+
 }

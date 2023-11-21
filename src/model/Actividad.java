@@ -56,26 +56,6 @@ public class Actividad {
 	public void setTareas(Cola<Tarea> tareas) {
 		this.tareas = tareas;
 	}
-
-	
-//	public String calcularMin() {
-//	    int tiempoMinimo = 0;
-//	    String tiempoMin = "";
-//	    // Verificar si la cola de tareas no está vacía
-//	    if (tareas.estaVacia()==true) {
-//	        Nodo<Tarea> actual = tareas.getPrimero(); // Obtener el primer nodo de la cola
-//	        
-//	        while (actual != null) {
-//	            tiempoMinimo += actual.getValorNodo().getDuracionMin();
-//	            actual = actual.getSiguienteNodo(); // Avanzar al siguiente nodo
-//	        }
-//	        tiempoMin = Integer.toString(tiempoMinimo);
-//	    } else {
-//	        tiempoMin = "0"; // Si la cola está vacía, el tiempo mínimo es cero
-//	    }
-//	    
-//	    return tiempoMin;
-//	}
 	
 	public String calcularMin() {
 	    int tiempoMinimo = 0;
@@ -126,24 +106,6 @@ public class Actividad {
 	    
 	    return tiempoMin;
 	}
-	
-//	public String calcularMax() {
-//	    int tiempoMinimo = 0;
-//	    String tiempoMin = "";
-//	    if (!tareas.estaVacia()) {
-//	        Nodo<Tarea> actual = tareas.getPrimero(); 
-//	        
-//	        while (actual != null) {
-//	            tiempoMinimo += actual.getValorNodo().getDuracionMin()+10;
-//	            actual = actual.getSiguienteNodo();
-//	        }
-//	        tiempoMin = Integer.toString(tiempoMinimo);
-//	    } else {
-//	        tiempoMin = "0"; 
-//	    }
-//	    
-//	    return tiempoMin;
-//	}
 
 	public ArrayList<Tarea> traerTareas() {
 		ArrayList<Tarea> listaTareas = new ArrayList<Tarea>();

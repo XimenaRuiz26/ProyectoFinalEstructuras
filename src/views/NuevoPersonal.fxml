@@ -88,5 +88,10 @@
             <Image url="@../imagenes/grifo.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="flechaRegresarEvent" fitHeight="37.0" fitWidth="42.0" layoutX="14.0" layoutY="6.0" onMouseClicked="#flechaRegresarEvent" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/flecha-izquierda.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

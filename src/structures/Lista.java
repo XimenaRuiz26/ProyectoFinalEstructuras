@@ -1,296 +1,273 @@
 package structures;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
+public class Lista<T> implements Iterable<T> {
 
-public class Lista <T> implements Iterable<T> {
+    private Nodo<T> nodoPrimero;
+    private Nodo<T> nodoUltimo;
+    private int tamanio;
 
-	private Nodo<T> nodoPrimero;
-	private Nodo<T> nodoUltimo;
-	private int tamanio;
+    public Lista() {
+        nodoPrimero = null;
+        nodoUltimo = null; // Corrección aquí
+        tamanio = 0;
+    }
 
-	public Lista() {
-		nodoPrimero = null;
-		nodoPrimero = null;
-		tamanio = 0;
-	}
+    // Métodos básicos
 
-	// Metodos basicos
+    // Agregar al inicio de la lista
+    public void agregarInicio(T valorNodo) {
 
-	// Agregar al inicio de la lista
-	public void agregarInicio(T valorNodo) {
+        Nodo<T> nuevoNodo = new Nodo<>(valorNodo);
 
-		Nodo<T> nuevoNodo = new Nodo<>(valorNodo);
+        if (estaVacia()) {
+            nodoPrimero = nuevoNodo;
+        } else {
+            nuevoNodo.setSiguienteNodo(nodoPrimero);
+            nodoPrimero = nuevoNodo;
+        }
+        tamanio++;
+    }
 
-		if (estaVacia()) {
-			nodoPrimero = nuevoNodo;
-		} else {
-			nuevoNodo.setSiguienteNodo(nodoPrimero);
-			nodoPrimero = nuevoNodo;
-		}
-		tamanio++;
-	}
-	
-	public Nodo<T> buscarNodoPorValor(T valor) {
-        Nodo<T> actual = nodoPrimero; // nodoPrimero es el primer nodo de tu lista
+    public Nodo<T> buscarNodoPorValor(T valor) {
+        Nodo<T> actual = nodoPrimero;
 
-        // Recorre la lista hasta encontrar el nodo con el valor deseado
         while (actual != null) {
             if (actual.getValorNodo().equals(valor)) {
-                return actual; // Devuelve el nodo si se encuentra el valor
+                return actual;
             }
             actual = actual.getSiguienteNodo();
         }
 
-        return null; // Retorna null si no se encuentra el valor en la lista
+        return null;
     }
 
+    // Agregar al final de la lista
+    public void agregarfinal(T valorNodo) {
 
-	// Agregar al final de la lista
-	public void agregarfinal(T valorNodo) {
+        Nodo<T> nodo = new Nodo<>(valorNodo);
 
-		Nodo<T> nodo = new Nodo<>(valorNodo);
+        if (estaVacia()) {
+            nodoPrimero = nodoUltimo = nodo;
+        } else {
+            nodoUltimo.setSiguienteNodo(nodo);
+            nodoUltimo = nodo;
+        }
 
-		if (estaVacia()) {
-			nodoPrimero = nodoUltimo = nodo;
-		} else {
-			nodoUltimo.setSiguienteNodo(nodo);
-			nodoUltimo = nodo;
-		}
+        tamanio++;
+    }
 
-		tamanio++;
-	}
+    // Obtener el valor de un Nodo
+    public T obtenerValorNodo(int indice) {
 
-	// Obtener Nodo el valor de un Nodo
-	public T obtenerValorNodo(int indice) {
+        Nodo<T> nodoTemporal = null;
+        int contador = 0;
 
-		Nodo<T> nodoTemporal = null;
-		int contador = 0;
+        if (indiceValido(indice)) {
+            nodoTemporal = nodoPrimero;
 
-		if (indiceValido(indice)) {
-			nodoTemporal = nodoPrimero;
+            while (contador < indice) {
+                nodoTemporal = nodoTemporal.getSiguienteNodo();
+                contador++;
+            }
+        }
 
-			while (contador < indice) {
+        if (nodoTemporal != null)
+            return nodoTemporal.getValorNodo();
+        else
+            throw new RuntimeException("Índice no válido");
+    }
 
-				nodoTemporal = nodoTemporal.getSiguienteNodo();
-				contador++;
-			}
-		}
+    // Verificar si el índice es válido
+    private boolean indiceValido(int indice) {
+        if (indice >= 0 && indice < tamanio) {
+            return true;
+        }
+        throw new RuntimeException("Índice no válido");
+    }
 
-		if (nodoTemporal != null)
-			return nodoTemporal.getValorNodo();
-		else
-			return null;
-	}
+    // Verificar si la lista está vacía
+    public boolean estaVacia() {
+        return (nodoPrimero == null);
+    }
 
-	// Verificar si indice es valido
-	private boolean indiceValido(int indice) {
-		if (indice >= 0 && indice < tamanio) {
-			return true;
-		}
-		throw new RuntimeException("ï¿½ndice no vï¿½lido");
-	}
+    /**
+     * Imprime en consola la lista enlazada
+     */
+    public void imprimirLista() {
 
-	// Verificar si la lista esta vacia
-	public boolean estaVacia() {
-		return (nodoPrimero == null) ? true : false;
-	}
+        Nodo<T> aux = nodoPrimero;
 
-	/**
-	 * Imprime en consola la lista enlazada
-	 */
-	public void imprimirLista() {
+        while (aux != null) {
+            System.out.print(aux.getValorNodo() + "\t");
+            aux = aux.getSiguienteNodo();
+        }
 
-		Nodo<T> aux = nodoPrimero;
+        System.out.println();
+    }
 
-		while (aux != null) {
-			System.out.print(aux.getValorNodo() + "\t");
-			aux = aux.getSiguienteNodo();
-		}
+    public void imprimir2() {
+        Nodo<T> actual = nodoPrimero;
+        while (actual != null) {
+            T dato = actual.getValorNodo();
+            System.out.println(dato.toString());
+            actual = actual.getSiguienteNodo();
+        }
+    }
 
-		System.out.println();
-	}
+    // Eliminar dado el valor de un nodo
+    public T eliminar(T dato) {
+        Nodo<T> nodo = nodoPrimero;
+        Nodo<T> previo = null;
+        Nodo<T> siguiente;
 
-	// public void imprimir() {
-	// Nodo<T> actual = nodoPrimero;
-	// while (actual != null) {
-	// Persona persona = (Persona) actual.getValorNodo(); // Suponiendo que los
-	// elementos en la lista son de tipo Persona
-	// System.out.println("Nombre: " + persona.getNombre() + ", CÃ©dula: " +
-	// persona.getCedula());
-	// actual = actual.getSiguienteNodo();
-	// }
-	// }
+        while (nodo != null) {
+            if (nodo.getValorNodo().equals(dato)) {
+                siguiente = nodo.getSiguienteNodo();
+                if (previo == null) {
+                    nodoPrimero = siguiente;
+                } else {
+                    previo.setSiguienteNodo(siguiente);
+                }
 
-	public void imprimir2() {
-		Nodo<T> actual = nodoPrimero;
-		while (actual != null) {
-			T dato = actual.getValorNodo();
-			System.out.println(dato.toString());
-			actual = actual.getSiguienteNodo();
-		}
-	}
+                if (siguiente == null) {
+                    // nodoUltimo = previo;
+                } else {
+                    nodo.setSiguienteNodo(null);
+                }
 
-	// Eliminar dado el valor de un nodo
-	public T eliminar(T dato) {
-		Nodo<T> nodo = nodoPrimero;
-		Nodo<T> previo = null;
-		Nodo<T> siguiente = null;
-		boolean encontrado = false;
+                tamanio--;
+                return dato;
+            }
+            previo = nodo;
+            nodo = nodo.getSiguienteNodo();
+        }
 
-		// buscar el nodo previo
-		while (nodo != null) {
-			if (nodo.getValorNodo() == dato) {
-				encontrado = true;
-				break;
-			}
-			previo = nodo;
-			nodo = nodo.getSiguienteNodo();
-		}
+        throw new RuntimeException("El elemento no existe");
+    }
 
-		if (encontrado) {
-			siguiente = nodo.getSiguienteNodo();
-			if (previo == null) {
-				nodoPrimero = siguiente;
-			} else {
-				previo.setSiguienteNodo(siguiente);
-			}
+    // Elimina el primer nodo de la lista
+    public T eliminarPrimero() {
 
-			if (siguiente == null) {
-				// nodoUltimo = previo;
-			} else {
-				nodo.setSiguienteNodo(null);
-			}
+        if (!estaVacia()) {
+            Nodo<T> n = nodoPrimero;
+            T valor = n.getValorNodo();
+            nodoPrimero = n.getSiguienteNodo();
 
-			nodo = null;
-			tamanio--;
-			return dato;
-		}
-		throw new RuntimeException("El elemento no existe");
-	}
+            if (nodoPrimero == null) {
+                // nodoUltimo = null;
+            }
 
-	// Elimina el primer nodo de la lista
-	public T eliminarPrimero() {
+            tamanio--;
+            return valor;
+        }
 
-		if (!estaVacia()) {
-			Nodo<T> n = nodoPrimero;
-			T valor = n.getValorNodo();
-			nodoPrimero = n.getSiguienteNodo();
+        throw new RuntimeException("Lista vacía");
+    }
 
-			if (nodoPrimero == null) {
-				// nodoUltimo = null;
-			}
+    private Nodo<T> obtenerNodo(int indice) {
 
-			tamanio--;
-			return valor;
-		}
+        if (indice >= 0 && indice < tamanio) {
 
-		throw new RuntimeException("Lista vacï¿½a");
-	}
+            Nodo<T> nodo = nodoPrimero;
 
-	private Nodo<T> obtenerNodo(int indice) {
+            for (int i = 0; i < indice; i++) {
+                nodo = nodo.getSiguienteNodo();
+            }
 
-		if (indice >= 0 && indice < tamanio) {
+            return nodo;
+        }
 
-			Nodo<T> nodo = nodoPrimero;
+        return null;
+    }
 
-			for (int i = 0; i < indice; i++) {
-				nodo = nodo.getSiguienteNodo();
-			}
+    /**
+     * Cambia el valor de un nodo dada su posición en la lista
+     * 
+     * @param indice posición donde se va a cambiar el dato
+     * @param nuevo  nuevo valor por el que se actualizará el nodo
+     */
+    public void modificarNodo(int indice, T nuevo) {
 
-			return nodo;
-		}
+        if (indiceValido(indice)) {
+            Nodo<T> nodo = obtenerNodo(indice);
+            nodo.setValorNodo(nuevo);
+        }
 
-		return null;
-	}
+    }
 
-	/**
-	 * Cambia el valor de un nodo dada su posiciï¿½n en la lista
-	 * 
-	 * @param indice
-	 *            posiciï¿½n donde se va a cambiar el dato
-	 * @param nuevo
-	 *            nuevo valor por el que se actualizarï¿½ el nodo
-	 */
-	public void modificarNodo(int indice, T nuevo) {
+    /**
+     * Retorna la primera posición donde está guardado el dato
+     * 
+     * @param dato valor a buscar dentro de la lista
+     * @return primera posición del dato
+     */
+    public int obtenerPosicionNodo(T dato) {
 
-		if (indiceValido(indice)) {
-			Nodo<T> nodo = obtenerNodo(indice);
-			nodo.setValorNodo(nuevo);
-		}
+        int i = 0;
 
-	}
+        for (Nodo<T> aux = nodoPrimero; aux != null; aux = aux.getSiguienteNodo()) {
+            if (aux.getValorNodo().equals(dato)) {
+                return i;
+            }
+            i++;
+        }
 
-	/**
-	 * Retorna la primera posiciï¿½n donde estï¿½ guardado el dato
-	 * 
-	 * @param dato
-	 *            valor a buscar dentro de la lista
-	 * @return primera posiciï¿½n del dato
-	 */
-	public int obtenerPosicionNodo(T dato) {
+        return -1;
+    }
 
-		int i = 0;
+    @Override
+    public Iterator<T> iterator() {
+        return new IteradorListaSimple(nodoPrimero);
+    }
 
-		for (Nodo<T> aux = nodoPrimero; aux != null; aux = aux.getSiguienteNodo()) {
-			if (aux.getValorNodo().equals(dato)) {
-				return i;
-			}
-			i++;
-		}
+    public class IteradorListaSimple implements Iterator<T> {
 
-		return -1;
-	}
+        private Nodo<T> nodo;
+        private int posicion;
 
-	@Override
-	public Iterator<T> iterator() {
+        /**
+         * Constructor de la clase Iterador
+         * 
+         * @param aux Primer Nodo de la lista
+         */
+        public IteradorListaSimple(Nodo<T> nodo) {
+            this.nodo = nodo;
+            this.posicion = 0;
+        }
 
-		return new IteradorListaSimple(nodoPrimero);
-	}
+        @Override
+        public boolean hasNext() {
+            return nodo != null;
+        }
 
-	public class IteradorListaSimple implements Iterator<T> {
+        @Override
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            T valor = nodo.getValorNodo();
+            nodo = nodo.getSiguienteNodo();
+            posicion++;
+            return valor;
+        }
 
-		private Nodo<T> nodo;
-		private int posicion;
+        /**
+         * Posición actual de la lista
+         * 
+         * @return posición
+         */
+        public int getPosicion() {
+            return posicion;
+        }
 
-		/**
-		 * Constructor de la clase Iterador
-		 * 
-		 * @param aux
-		 *            Primer Nodo de la lista
-		 */
-		public IteradorListaSimple(Nodo<T> nodo) {
-			this.nodo = nodo;
-			this.posicion = 0;
-		}
+    }
 
-		@Override
-		public boolean hasNext() {
-			return nodo != null;
-		}
-
-		@Override
-		public T next() {
-			T valor = nodo.getValorNodo();
-			nodo = nodo.getSiguienteNodo();
-			posicion++;
-			return valor;
-		}
-
-		/**
-		 * Posiciï¿½n actual de la lista
-		 * 
-		 * @return posiciï¿½n
-		 */
-		public int getPosicion() {
-			return posicion;
-		}
-
-	}
-
-	// Metodos get y set de la clase ListaSimple
-
-	public Nodo<T> getNodoPrimero() {
+    
+    
+    public Nodo<T> getNodoPrimero() {
 		return nodoPrimero;
 	}
 

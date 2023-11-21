@@ -1,11 +1,13 @@
 package model;
 
 public class Admin {
+	//Atributos de la clase admin
 	private String id; 
 	private String nombre; 
 	private String usuario; 
 	private String contrasenia;
 	
+	//Constructores
 	public Admin(String id, String nombre, String usuario, String contrasenia) {
 		super();
 		this.id = id;
@@ -18,6 +20,7 @@ public class Admin {
 		super();
 	}
 
+	//Getters y setters
 	public String getId() {
 		return id;
 	}
