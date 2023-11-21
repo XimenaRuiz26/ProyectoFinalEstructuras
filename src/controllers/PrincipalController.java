@@ -208,48 +208,124 @@ public class PrincipalController {
 		crearActividadAction();
 	}
 
+//	private void crearActividadAction() {
+//		String nombreA = txtNombreA.getText();
+//		String descripcion = txtDescripcionA.getText();
+//		String proceso = comboBoxProcesosA.getSelectionModel().getSelectedItem();
+//		String preceder = comboBoxActividades.getSelectionModel().getSelectedItem();
+//		RadioButton radioButtonSeleccionado = (RadioButton) grupoOpciones.getSelectedToggle();
+//		String seleccion = radioButtonSeleccionado.getText();
+//		RadioButton radioButtonSeleccionado2 = (RadioButton) grupoOpciones2.getSelectedToggle();
+//		RadioButton radioButtonSeleccionado3 = (RadioButton) grupoOpciones3.getSelectedToggle();
+//		String seleccionUltima = null;
+//		String seleccionFinal = null;
+//		if (radioButtonSeleccionado2 != null) {
+//		    seleccionUltima = radioButtonSeleccionado2.getText();
+//		}
+//		if (radioButtonSeleccionado3 != null) {
+//		    seleccionFinal = radioButtonSeleccionado3.getText();
+//		}
+//
+//		if (datosValidosA(nombreA, descripcion, proceso, seleccion)) {
+//			if (preceder == null) {
+//				if(modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion)){
+//					mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad",
+//							AlertType.INFORMATION);
+//					limpiarCamposA();
+//					obtenerPosiblesActividades();
+//				}else {
+//					mostrarMensaje("Notificacion creación", "Actividad no creada",
+//							"Ya existe una actividad con el nombre " + nombreA + " No se puede crear",
+//							AlertType.INFORMATION);
+//					limpiarCamposA();
+//				}
+//			} else {
+//				if (modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion)) {
+//					mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad",
+//							AlertType.INFORMATION);
+//
+//					limpiarCamposA();
+//					obtenerPosiblesActividades();
+//
+//				} else {
+//					mostrarMensaje("Notificacion creación", "Actividad no creada",
+//							"Ya existe una actividad con el nombre " + nombreA + " No se puede crear",
+//							AlertType.INFORMATION);
+//					limpiarCamposA();
+//				}
+//			}
+//			if(preceder == null && seleccionUltima == null){
+//				if(modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion)){
+//					mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad al final",
+//							AlertType.INFORMATION);
+//					limpiarCamposA();
+//					obtenerPosiblesActividades();
+//				}else {
+//					mostrarMensaje("Notificacion creación", "Actividad no creada",
+//							"Ya existe una actividad con el nombre " + nombreA + " No se puede crear",
+//							AlertType.INFORMATION);
+//					limpiarCamposA();
+//				}
+//			}
+//			if(preceder== null && seleccionFinal== null){
+//				if(modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso,seleccion)){
+//					mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad al final",
+//							AlertType.INFORMATION);
+//					limpiarCamposA();
+//					obtenerPosiblesActividades();
+//				}else{
+//					mostrarMensaje("Notificacion creación", "Actividad no creada",
+//							"Ya existe una actividad con el nombre " + nombreA + " No se puede crear",
+//							AlertType.INFORMATION);
+//					limpiarCamposA();
+//				}
+//			}
+//		} else {
+//			mostrarMensaje("Notificación creación", "Informacion invalida", "Informacion invalida", AlertType.ERROR);
+//		}
+//		
+//	}
+	
 	private void crearActividadAction() {
-		String nombreA = txtNombreA.getText();
-		String descripcion = txtDescripcionA.getText();
-		String proceso = comboBoxProcesosA.getSelectionModel().getSelectedItem();
-		String preceder = comboBoxActividades.getSelectionModel().getSelectedItem();
-		RadioButton radioButtonSeleccionado = (RadioButton) grupoOpciones.getSelectedToggle();
-		String seleccion = radioButtonSeleccionado.getText();
-		RadioButton radioButtonSeleccionado2 = (RadioButton) grupoOpciones2.getSelectedToggle();
-		RadioButton radioButtonSeleccionado3 = (RadioButton) grupoOpciones3.getSelectedToggle();
-		String seleccionUltima = null;
-		String seleccionFinal = null;
-		if (radioButtonSeleccionado2 != null) {
-		    seleccionUltima = radioButtonSeleccionado2.getText();
-		}
-		if (radioButtonSeleccionado3 != null) {
-		    seleccionFinal = radioButtonSeleccionado3.getText();
-		}
-		
+	    String nombreA = txtNombreA.getText();
+	    String descripcion = txtDescripcionA.getText();
+	    String proceso = comboBoxProcesosA.getSelectionModel().getSelectedItem();
+	    String preceder = comboBoxActividades.getSelectionModel().getSelectedItem();
+	    RadioButton radioButtonSeleccionado = (RadioButton) grupoOpciones.getSelectedToggle();
+	    String seleccion = radioButtonSeleccionado.getText();
+	    RadioButton radioButtonSeleccionado2 = (RadioButton) grupoOpciones2.getSelectedToggle();
+	    RadioButton radioButtonSeleccionado3 = (RadioButton) grupoOpciones3.getSelectedToggle();
+	    String seleccionUltima = (radioButtonSeleccionado2 != null) ? radioButtonSeleccionado2.getText() : null;
+	    String seleccionFinal = (radioButtonSeleccionado3 != null) ? radioButtonSeleccionado3.getText() : null;
 
-		
-		 boolean success;
-		    if (preceder == null) {
-		        if (seleccionUltima== null && seleccionFinal == null) {
-		        	success = modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion);
-		        } else {
-		        	success = modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion);
-		        }
-		    } else {
-		        success = modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion);
-		    }
-		    if (success) {
-		        mostrarMensaje("Notificacion creación", "Actividad creada", "Se ha creado con exito la actividad",
-		                AlertType.INFORMATION);
-		        limpiarCamposA();
-		        obtenerPosiblesActividades();
-		    } else {
-		        mostrarMensaje("Notificacion creación", "Actividad no creada",
-		                "Ya existe una actividad con el nombre " + nombreA + " No se puede crear",
-		                AlertType.INFORMATION);
-		        limpiarCamposA();
-		    }
+	    if (datosValidosA(nombreA, descripcion, proceso, seleccion)) {
+	        boolean actividadCreada = false;
+
+	        if (preceder == null && seleccionUltima == null) {
+	            actividadCreada = modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion);
+	        } else if (preceder == null && seleccionFinal == null) {
+	            actividadCreada = modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion);
+	        } else {
+	            actividadCreada = modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion);
+	        }
+
+	        if (actividadCreada) {
+	            mostrarMensaje("Notificación creación", "Actividad creada", "Se ha creado con éxito la actividad",
+	                    AlertType.INFORMATION);
+	            limpiarCamposA();
+	            obtenerPosiblesActividades();
+	        } else {
+	            mostrarMensaje("Notificación creación", "Actividad no creada",
+	                    "Ya existe una actividad con el nombre " + nombreA + ". No se puede crear", AlertType.INFORMATION);
+	            limpiarCamposA();
+	        }
+	    } else {
+	        mostrarMensaje("Notificación creación", "Información inválida", "Información inválida", AlertType.ERROR);
+	    }
 	}
+
+
+	
 
 	private void limpiarCamposA() {
 		tableActividades.refresh();

@@ -5,19 +5,21 @@ import java.util.Iterator;
 
 import structures.Cola;
 import structures.Lista;
+import structures.ListaDoble;
 import structures.Nodo;
+import structures.NodoDoble;
 
 public class Proceso {
 	private String id; 
 	private String nombre; 
 	private String descripcion; 
-	private Lista<Actividad> actividades;
+	private ListaDoble<Actividad> actividades;
 	
 	public Proceso(String id, String nombre, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		actividades = new Lista<Actividad>();
+		actividades = new ListaDoble<Actividad>();
 		this.descripcion = descripcion;
 		
 	}
@@ -42,11 +44,11 @@ public class Proceso {
 		this.nombre = nombre;
 	}
 
-	public Lista<Actividad> getActividades() {
+	public ListaDoble<Actividad> getActividades() {
 		return actividades;
 	}
 
-	public void setActividades(Lista<Actividad> actividades) {
+	public void setActividades(ListaDoble<Actividad> actividades) {
 		this.actividades = actividades;
 	}
 
@@ -73,7 +75,7 @@ public class Proceso {
 		actividades.imprimirLista();
 		ArrayList<String> listaActividades = new ArrayList<String>();
 		if (actividades != null) {
-			Nodo<Actividad> actual = actividades.getNodoPrimero();
+			NodoDoble<Actividad> actual = actividades.getNodoPrimero();
 			while (actual != null) {
 				Actividad actividad = actual.getValorNodo();
 				listaActividades.add(actividad.getNombre());
@@ -91,7 +93,7 @@ public class Proceso {
 		actividad.setDescripcion(descripcion2);
 		actividad.setObligatoria(verificarObligatoria(seleccion));
 		if (actividades == null) {
-			actividades = new Lista<Actividad>();
+			actividades = new ListaDoble<Actividad>();
 		}
 		if (verificarActividad(nombreA) == true) {
 			return false;
@@ -104,7 +106,7 @@ public class Proceso {
 
 	public void imprimirLista() {
 
-		Nodo<Actividad> aux = actividades.getNodoPrimero();
+		NodoDoble<Actividad> aux = actividades.getNodoPrimero();
 
 		while (aux != null) {
 			System.out.print(aux.getValorNodo().getNombre() + "\t");
@@ -115,8 +117,8 @@ public class Proceso {
 	}
 
 	public void insertarAntesDe(String actividadExistente, Actividad nuevaActividad) {
-		Nodo<Actividad> cabeza = actividades.getNodoPrimero();
-		Nodo<Actividad> nuevo = new Nodo<>(nuevaActividad);
+		NodoDoble<Actividad> cabeza = actividades.getNodoPrimero();
+		NodoDoble<Actividad> nuevo = new NodoDoble<>(nuevaActividad);
 
 		if (cabeza == null) {
 			actividades.setNodoPrimero(nuevo);
@@ -124,8 +126,8 @@ public class Proceso {
 			nuevo.setSiguienteNodo(cabeza);
 			actividades.setNodoPrimero(nuevo);
 		} else {
-			Nodo<Actividad> previo = null;
-			Nodo<Actividad> actual = cabeza;
+			NodoDoble<Actividad> previo = null;
+			NodoDoble<Actividad> actual = cabeza;
 
 			while (actual != null && !actual.getValorNodo().getNombre().equals(actividadExistente)) {
 				previo = actual;
@@ -166,7 +168,7 @@ public class Proceso {
 	}
 
 	public boolean buscarActividades(String actividad1, String actividad2) {
-		Nodo<Actividad> actual = actividades.getNodoPrimero();
+		NodoDoble<Actividad> actual = actividades.getNodoPrimero();
 
 		while (actual != null) {
 			Actividad actividad = (Actividad) actual.getValorNodo();
@@ -181,7 +183,7 @@ public class Proceso {
 
 	public ArrayList<String> traerInfoActividad(String actividad2) {
 		ArrayList<String> info = new ArrayList<String>(3);
-		Nodo<Actividad> actual = actividades.getNodoPrimero();
+		NodoDoble<Actividad> actual = actividades.getNodoPrimero();
 		while (actual != null) {
 			Actividad actividad = (Actividad) actual.getValorNodo();
 			if (actividad.getNombre().equals(actividad2)) {
@@ -197,7 +199,7 @@ public class Proceso {
 
 	public ArrayList<Tarea> traerTareas(String actividad2) {
 		ArrayList<Tarea> listaTareas = new ArrayList<Tarea>();
-		Nodo<Actividad> actual = actividades.getNodoPrimero();
+		NodoDoble<Actividad> actual = actividades.getNodoPrimero();
 		while (actual != null) {
 			Actividad actividad = (Actividad) actual.getValorNodo();
 			if (actividad.getNombre().equals(actividad2)) {
@@ -210,7 +212,7 @@ public class Proceso {
 	}
 
 	public void intercambiarActividades(String nombreActividad1, String nombreActividad2) {
-		Nodo<Actividad> actual = actividades.getNodoPrimero();
+		NodoDoble<Actividad> actual = actividades.getNodoPrimero();
 		Actividad actividad1 = null;
 		Actividad actividad2 = null;
 
@@ -234,7 +236,7 @@ public class Proceso {
 
 	public boolean intercambiarAtributis(String actividad11, String actividad22) {
 		actividades.imprimirLista();
-		Nodo<Actividad> actual = actividades.getNodoPrimero();
+		NodoDoble<Actividad> actual = actividades.getNodoPrimero();
 		Actividad actividad1 = null;
 		Actividad actividad2 = null;
 
@@ -266,7 +268,7 @@ public class Proceso {
 
 	public ArrayList<String> traerActividades() {
 	    ArrayList<String> nombresActividades = new ArrayList<String>();
-	    Nodo<Actividad> actual = actividades.getNodoPrimero();
+	    NodoDoble<Actividad> actual = actividades.getNodoPrimero();
 
 	    while (actual != null) {
 	        Actividad actividad = actual.getValorNodo();
@@ -281,7 +283,7 @@ public class Proceso {
 
 	public ArrayList<String> traerInfoActividad2(String actividad1) {
 		ArrayList<String> info = new ArrayList<String>(4);
-		Nodo<Actividad> actual = actividades.getNodoPrimero();
+		NodoDoble<Actividad> actual = actividades.getNodoPrimero();
 		while (actual != null) {
 			Actividad actividad = (Actividad) actual.getValorNodo();
 			if (actividad.getNombre().equals(actividad1)) {
@@ -302,7 +304,7 @@ public class Proceso {
 
 	public boolean crearTarea(String nombreP, String descripcion2, String actividad2, String seleccion,
 			String duracionMin) {
-		Nodo<Actividad> actual = actividades.getNodoPrimero();
+		NodoDoble<Actividad> actual = actividades.getNodoPrimero();
 
 		while (actual != null) {
 			Actividad actividad = (Actividad) actual.getValorNodo();
@@ -321,7 +323,7 @@ public class Proceso {
 		actividad.setDescripcion(descripcion2);
 		actividad.setObligatoria(verificarObligatoria(seleccion));
 		if (actividades == null) {
-			actividades = new Lista<Actividad>();
+			actividades = new ListaDoble<Actividad>();
 		}
 		if (verificarActividad(nombreA) == true) {
 			return false;

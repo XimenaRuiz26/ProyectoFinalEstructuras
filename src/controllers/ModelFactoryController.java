@@ -13,6 +13,7 @@ import model.Restaurante;
 import model.Tarea;
 import structures.Cola;
 import structures.Lista;
+import structures.ListaDoble;
 public class ModelFactoryController {
 	Restaurante restaurante;
 	
@@ -113,7 +114,7 @@ public class ModelFactoryController {
     	proceso.setId("1111");
     	proceso.setDescripcion("gestionar los pedidos");
     	
-    	Lista <Actividad> listaActividades = new Lista<Actividad>();
+    	ListaDoble <Actividad> listaActividades = new ListaDoble<Actividad>();
     	
     	Cola<Tarea> listaTareas1 = new Cola<Tarea>();
     	
