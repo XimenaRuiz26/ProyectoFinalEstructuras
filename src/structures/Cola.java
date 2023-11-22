@@ -46,6 +46,37 @@ public class Cola <T> {
 		return dato;
 	}
 	
+    public void agregarEnPosicion(T dato, int posicion) {
+    	Nodo<T> nodo = new Nodo<>(dato);
+
+        if (nodoPrimero == null) {
+            nodoPrimero = nodo;
+            nodoUltimo = nodo;
+        } else if (posicion == 0) {
+            nodo.setSiguienteNodo(nodoPrimero);
+            nodoPrimero = nodo;
+        } else {
+            Nodo<T> actual = nodoPrimero;
+            int contador = 0;
+
+            while (actual != null && contador < posicion - 1) {
+                actual = actual.getSiguienteNodo();
+                contador++;
+            }
+
+            if (actual == null) {
+                throw new IllegalArgumentException("Posición inválida");
+            }
+
+            nodo.setSiguienteNodo(actual.getSiguienteNodo());
+            actual.setSiguienteNodo(nodo);
+
+            if (actual == nodoUltimo) {
+                nodoUltimo = nodo;
+            }
+        }
+    }
+	
 	/**
 	 * Verifica si la Cola está vacía
 	 * @return true si está vacía

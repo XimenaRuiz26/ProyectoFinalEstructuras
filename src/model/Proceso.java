@@ -328,10 +328,42 @@ public class Proceso {
 		if (verificarActividad(nombreA) == true) {
 			return false;
 		} else {
-			actividades.agregarfinal(actividad);
+			actividades.agregarFinal(actividad);
+			System.out.println("Entro a la final");
 			imprimirLista();
 			return true;
 		}
+	}
+
+	public boolean crearTareaPosicion(String nombreP, String descripcion2, String actividad2, String seleccion,
+			String duracionMin, String posicion) {
+		NodoDoble<Actividad> actual = actividades.getNodoPrimero();
+
+		while (actual != null) {
+			Actividad actividad = (Actividad) actual.getValorNodo();
+			if (actividad.getNombre().equals(actividad2)) {
+				return actividad.crearTareaPosicion(nombreP, descripcion2, seleccion, duracionMin, posicion);
+			}
+			actual = actual.getSiguienteNodo();
+		}
+
+		return false;
+	}
+
+	public String obtenerDuracion() {
+		NodoDoble<Actividad> actual = actividades.getNodoPrimero();
+		String duracion2="";
+		int duracion= 0;
+		while (actual != null) {
+			Actividad actividad = (Actividad) actual.getValorNodo();
+			if(actividad!= null){
+				duracion+= Integer.parseInt(actividad.calcularMin());
+			}
+			duracion2= Integer.toString(duracion);
+			actual = actual.getSiguienteNodo();
+		}
+
+		return duracion2;
 	}
 
 }

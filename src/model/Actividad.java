@@ -1,10 +1,8 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import structures.Cola;
-import structures.Lista;
 import structures.Nodo;
 
 public class Actividad {
@@ -163,6 +161,25 @@ public class Actividad {
 			return false;
 		}
 		return false;
+	}
+
+	public boolean crearTareaPosicion(String nombreP, String descripcion2, String seleccion, String duracionMin,
+			String posicion) {
+		Tarea tarea = new Tarea();
+		tarea.setNombre(nombreP);
+		tarea.setDescripcion(descripcion2);
+		tarea.setDuracionMin(Integer.parseInt(duracionMin));
+		tarea.setObligatoria(verificarObligatoria(seleccion));
+		if (tareas == null) {
+			tareas = new Cola<Tarea>();
+		}
+		if (verificarTarea(nombreP) == true) {
+			return false;
+		} else {
+			tareas.agregarEnPosicion(tarea, Integer.parseInt(posicion));
+			tareas.imprimir();
+			return true;
+		}
 	}
 	
 	

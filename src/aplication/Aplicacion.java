@@ -1,5 +1,4 @@
 package aplication;
-
 import java.io.IOException;
 
 import controllers.AdminController;
@@ -13,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 public class Aplicacion extends Application{
 
 	private Stage primaryStage;
@@ -155,7 +153,6 @@ public class Aplicacion extends Application{
 			e.printStackTrace();
 		}
 	}
-	
 	//procedimiento main 
 	
 	public static void main(String[] args) {

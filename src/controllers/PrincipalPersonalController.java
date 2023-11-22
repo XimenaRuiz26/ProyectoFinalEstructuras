@@ -66,6 +66,9 @@ public class PrincipalPersonalController {
 	@FXML
 	private RadioButton rBtnNo;
 
+    @FXML
+    private TextField txtPosicion;
+
 	private ToggleGroup grupoOpciones = new ToggleGroup();
 
 	ObservableList<Proceso> listaProcesosData = FXCollections.observableArrayList();
@@ -118,16 +121,23 @@ public class PrincipalPersonalController {
 		String duracionMin = txtDuracionMin.getText();
 		String proceso = comboBoxProceso.getSelectionModel().getSelectedItem();
 		String actividad = comboBoxActividades.getSelectionModel().getSelectedItem();
+		String posicion = txtPosicion.getText();
 
 		RadioButton radioButtonSeleccionado = (RadioButton) grupoOpciones.getSelectedToggle();
 		String seleccion = radioButtonSeleccionado.getText();
 
 		if (datosValidosTarea(nombreP, descripcion, proceso, actividad, duracionMin)) {
-			if (modelFactoryController.crearTarea(nombreP, descripcion, proceso, actividad, seleccion, duracionMin)) {
+			boolean tareaCreada = false;
+			if(posicion.equals("")){
+				tareaCreada = modelFactoryController.crearTarea(nombreP, descripcion, proceso, actividad, seleccion, duracionMin);
+			}else{
+				tareaCreada= modelFactoryController.crearTareaPosicion(nombreP, descripcion, proceso, actividad, seleccion, duracionMin, posicion);
+			}
+			
+			if(tareaCreada){
 				mostrarMensaje("Notificacion creación", "Tarea creada", "Se ha creado con exito la Tarea",
 						AlertType.INFORMATION);
 				limpiarCamposA();
-				
 			} else {
 				mostrarMensaje("Notificacion creación", "Tarea no creada",
 						"Ya existe una tarea con el nombre " + nombreP + " No se puede crear", AlertType.INFORMATION);
@@ -142,6 +152,7 @@ public class PrincipalPersonalController {
 		txtNombreTarea.setText("");
 		txtDescripcionTarea.setText("");
 		txtDuracionMin.setText("");
+		txtPosicion.setText("");
 		comboBoxActividades.setValue(null);
 		comboBoxProceso.setValue(null);
 		rBtnNo.setSelected(false);

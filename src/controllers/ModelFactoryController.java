@@ -1,6 +1,6 @@
 package controllers;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,10 +11,13 @@ import model.Personal;
 import model.Proceso;
 import model.Restaurante;
 import model.Tarea;
+import persistencia.ArchivoUtil;
+//import persistencia.ArchivoUtil;
 import structures.Cola;
 import structures.Lista;
 import structures.ListaDoble;
 public class ModelFactoryController {
+	
 	Restaurante restaurante;
 	
 
@@ -66,21 +69,25 @@ public class ModelFactoryController {
 	
     private void iniciarSalvarDatosPrueba() {
 		inicializarDatos();
+		try {
+
+			ArchivoUtil.exportarArchivoExcel(getRed().getListaProcesos());
+			
+			//Persistencia.cargarDatosArchivos(getBanco());
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+//		Lista<Proceso> x = new Lista<Proceso>();
 //		try {
-//
-//			Persistencia.guardarVendedores(getRed().getlistaClientes());
-//			Persistencia.guardarAdministrador(getRed().getAdministrador());
-//			Persistencia.guardarProductos(getRed().getlistaClientes());
-//			
-//			Persistencia.guardarRecursoBancoBinario(red);
-//			Persistencia.guardarRecursoBancoXML(red);
-//
-//			//Persistencia.cargarDatosArchivos(getBanco());
-//
+//			x= ArchivoUtil.leerProcesosArchivoExcel();
 //		} catch (IOException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+//		x.imprimirLista();
 		
 		System.out.println("Se inicializaron los datos");
 	}
@@ -204,7 +211,14 @@ public class ModelFactoryController {
 	}
 
 	public boolean crearProceso(String nombreP, String idP, String descripcionP) {
+		try {
+			ArchivoUtil.exportarArchivoExcel(getRed().getListaProcesos());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return restaurante.crearProceso(nombreP, idP, descripcionP);
+		
 	}
 
 	public ArrayList<Proceso> obtenerProcesos() {
@@ -262,4 +276,12 @@ public class ModelFactoryController {
 		
 	}
 
+	public boolean crearTareaPosicion(String nombreP, String descripcion, String proceso, String actividad,
+			String seleccion, String duracionMin, String posicion) {
+		return restaurante.crearTareaPosicion(nombreP, descripcion, proceso, actividad, seleccion, duracionMin, posicion);
+	}
+
+	public String obtenerDuracionMin(String nombre) {
+		return restaurante.obtenerDuracionMin(nombre);
+	}
 }

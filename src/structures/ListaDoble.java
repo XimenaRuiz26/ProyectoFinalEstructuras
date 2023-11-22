@@ -39,23 +39,18 @@ public class ListaDoble <T> implements Iterable<T> {
 
 
 	//Agregar al final de la lista
-	public void agregarfinal(T valorNodo) {
+	public void agregarFinal(T valorNodo) {
+	    NodoDoble<T> nuevoNodo = new NodoDoble<>(valorNodo);
 
-		NodoDoble<T> nuevoNodo = new NodoDoble<>(valorNodo);
-
-		if(estaVacia())
-		{
-			nodoPrimero = nodoUltimo = nuevoNodo;
-		}
-		else
-		{
-			nuevoNodo.setSiguienteNodo(nodoPrimero);
-			nodoPrimero.setAnteriorNodo(nuevoNodo);
-			nodoPrimero = nuevoNodo;
-		}
-		tamanio++;
+	    if (estaVacia()) {
+	        nodoPrimero = nodoUltimo = nuevoNodo;
+	    } else {
+	        nodoUltimo.setSiguienteNodo(nuevoNodo);
+	        nuevoNodo.setAnteriorNodo(nodoUltimo);
+	        nodoUltimo = nuevoNodo;
+	    }
+	    tamanio++;
 	}
-
 
 	/**
 	 * Agrega un valor en la lista en una posici�n espec�fica
@@ -417,7 +412,7 @@ public class ListaDoble <T> implements Iterable<T> {
 		}
 
 		public void add(T e) {
-			agregarfinal(e);
+			agregarFinal(e);
 		}
 
 

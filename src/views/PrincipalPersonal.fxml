@@ -145,7 +145,7 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="txtDuracionMin1" layoutX="377.0" layoutY="196.0" prefHeight="23.0" prefWidth="47.0" promptText="2" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
+                        <TextField fx:id="txtPosicion" layoutX="377.0" layoutY="196.0" prefHeight="23.0" prefWidth="47.0" promptText="2" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>

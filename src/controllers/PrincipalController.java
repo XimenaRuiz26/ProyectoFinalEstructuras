@@ -300,27 +300,30 @@ public class PrincipalController {
 
 	    if (datosValidosA(nombreA, descripcion, proceso, seleccion)) {
 	        boolean actividadCreada = false;
-
-	        if (preceder == null && seleccionUltima == null) {
-	            actividadCreada = modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion);
-	        } else if (preceder == null && seleccionFinal == null) {
-	            actividadCreada = modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion);
-	        } else {
-	            actividadCreada = modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion);
+	        if(preceder!=null && seleccionUltima.equals("No") && seleccionFinal.equals("No")){
+	        	actividadCreada = modelFactoryController.crearActividad(nombreA, descripcion, proceso, preceder, seleccion);
 	        }
-
-	        if (actividadCreada) {
-	            mostrarMensaje("Notificación creación", "Actividad creada", "Se ha creado con éxito la actividad",
+	        else if(preceder!= null && seleccionUltima.equals("Si") || preceder!= null && seleccionFinal.equals("Si")
+	        		|| preceder!= null && seleccionUltima.equals("Si") && seleccionFinal.equals("Si")){
+	        	mostrarMensaje("Notificación creación", "Seleccion", "Solo debe seleccionar un metodo para crear la actividad",
 	                    AlertType.INFORMATION);
-	            limpiarCamposA();
-	            obtenerPosiblesActividades();
-	        } else {
-	            mostrarMensaje("Notificación creación", "Actividad no creada",
-	                    "Ya existe una actividad con el nombre " + nombreA + ". No se puede crear", AlertType.INFORMATION);
-	            limpiarCamposA();
+	        	limpiarCamposA();
+	        }else if(preceder == null && seleccionUltima.equals("No") && seleccionFinal.equals("Si")){
+	        	actividadCreada = modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion);
 	        }
-	    } else {
-	        mostrarMensaje("Notificación creación", "Información inválida", "Información inválida", AlertType.ERROR);
+			if (actividadCreada) {
+				mostrarMensaje("Notificación creación", "Actividad creada", "Se ha creado con éxito la actividad",
+						AlertType.INFORMATION);
+				limpiarCamposA();
+				obtenerPosiblesActividades();
+			} else {
+				mostrarMensaje("Notificación creación", "Actividad no creada",
+						"Ya existe una actividad con el nombre " + nombreA + ". No se puede crear",
+						AlertType.INFORMATION);
+				limpiarCamposA();
+			}
+		} else {
+			mostrarMensaje("Notificación creación", "Información inválida", "Información inválida", AlertType.ERROR);
 	    }
 	}
 
@@ -335,6 +338,10 @@ public class PrincipalController {
 		comboBoxActividades.setValue(null);
 		rBtnNo.setSelected(false);
 		rBtnSi.setSelected(false);
+		rBtnSiFinal.setSelected(false);
+		rBtnNoFinal.setSelected(false);
+		rBtnSiUltimaA.setSelected(false);
+		rBtnUltimaA.setSelected(false);
 	}
 
 	private void filtrarActividades(ActionEvent event) {
@@ -675,6 +682,9 @@ public class PrincipalController {
 		labelNombreP.setText(procesoSeleccionado2.getNombre());
 		labelIdP.setText(procesoSeleccionado2.getId());
 		labelDescripcionP.setText(procesoSeleccionado2.getDescripcion());
+		labelDuracionMinP.setText(modelFactoryController.obtenerDuracionMin(procesoSeleccionado2.getNombre())+" min");
+		int maximo = Integer.parseInt(labelDuracionMinP.getText())*2;
+		labelDuracionMaxP.setText(Integer.toString(maximo)+ " min");
 
 	}
 

@@ -155,7 +155,7 @@ public class Restaurante {
 		}
 	}
 
-	private boolean verificarProceso(String idP) {
+	public boolean verificarProceso(String idP) {
 	    Nodo<Proceso> actual = listaProcesos.getNodoPrimero();
 	    while (actual != null) {
 	        Proceso proceso = actual.getValorNodo(); 
@@ -343,6 +343,35 @@ public class Restaurante {
 		}
 
 		return false;
+	}
+
+	public boolean crearTareaPosicion(String nombreP, String descripcion, String proceso2, String actividad,
+			String seleccion, String duracionMin, String posicion) {
+		Nodo<Proceso> actual = listaProcesos.getNodoPrimero();
+
+		while (actual != null) {
+			Proceso proceso = (Proceso) actual.getValorNodo();
+			if(proceso.getNombre().equals(proceso2)){
+				return proceso.crearTareaPosicion(nombreP, descripcion, actividad, seleccion, duracionMin, posicion);
+			}
+			actual = actual.getSiguienteNodo();
+		}
+
+		return false;
+	}
+
+	public String obtenerDuracionMin(String nombre2) {
+		Nodo<Proceso> actual = listaProcesos.getNodoPrimero();
+		String duracion= "";
+		while (actual != null) {
+			Proceso proceso = (Proceso) actual.getValorNodo();
+			if(proceso.getNombre().equals(nombre2)){
+				duracion=proceso.obtenerDuracion();
+			}
+			actual = actual.getSiguienteNodo();
+		}
+
+		return duracion;
 	}
 
 }
