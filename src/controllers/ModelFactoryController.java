@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.swing.JOptionPane;
+
 import model.Actividad;
 import model.Admin;
 import model.Cargo;
@@ -69,16 +71,6 @@ public class ModelFactoryController {
 	
     private void iniciarSalvarDatosPrueba() {
 		inicializarDatos();
-		try {
-
-			ArchivoUtil.exportarArchivoExcel(getRed().getListaProcesos());
-			
-			//Persistencia.cargarDatosArchivos(getBanco());
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 //		Lista<Proceso> x = new Lista<Proceso>();
 //		try {
@@ -91,6 +83,19 @@ public class ModelFactoryController {
 		
 		System.out.println("Se inicializaron los datos");
 	}
+    
+    public void exportar(){
+    	try {
+
+			ArchivoUtil.exportarArchivoExcel(getRed().getListaProcesos());
+			JOptionPane.showMessageDialog(null, "Se ha exportado con exito");
+			//Persistencia.cargarDatosArchivos(getBanco());
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     
     private void inicializarDatos() {
     	
@@ -211,12 +216,6 @@ public class ModelFactoryController {
 	}
 
 	public boolean crearProceso(String nombreP, String idP, String descripcionP) {
-		try {
-			ArchivoUtil.exportarArchivoExcel(getRed().getListaProcesos());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return restaurante.crearProceso(nombreP, idP, descripcionP);
 		
 	}
