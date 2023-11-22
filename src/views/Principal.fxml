@@ -202,12 +202,12 @@
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="rBtnNo" layoutX="397.0" layoutY="551.0" mnemonicParsing="false" text="No">
+                        <RadioButton fx:id="rBtnNo" layoutX="372.0" layoutY="551.0" mnemonicParsing="false" text="No">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
                         </RadioButton>
-                        <Button fx:id="btnCrearActividad" layoutX="747.0" layoutY="589.0" mnemonicParsing="false" onAction="#crearActividadEvent" prefHeight="38.0" prefWidth="166.0" style="-fx-background-color: #00CC33; -fx-background-radius: 30 30 30 30;" text="Crear actividad" textFill="WHITE">
+                        <Button fx:id="btnCrearActividad" layoutX="754.0" layoutY="582.0" mnemonicParsing="false" onAction="#crearActividadEvent" prefHeight="38.0" prefWidth="166.0" style="-fx-background-color: #00CC33; -fx-background-radius: 30 30 30 30;" text="Crear actividad" textFill="WHITE">
                            <font>
                               <Font name="Tw Cen MT Condensed Extra Bold" size="21.0" />
                            </font>

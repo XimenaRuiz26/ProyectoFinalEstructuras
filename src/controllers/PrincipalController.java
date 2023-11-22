@@ -2,6 +2,8 @@ package controllers;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import org.controlsfx.control.textfield.TextFields;
 
 import aplication.Aplicacion;
@@ -246,6 +248,7 @@ public class PrincipalController {
 	        	actividadCreada = modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion);
 	        }else if(preceder == null && seleccionUltima.equals("Si")&& seleccionFinal.equals("No")){
 	        	actividadCreada = modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion);
+	        	JOptionPane.showMessageDialog(null, "Entro donde no es");
 	        }
 			if (actividadCreada) {
 				mostrarMensaje("Notificación creación", "Actividad creada", "Se ha creado con éxito la actividad",
