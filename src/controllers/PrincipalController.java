@@ -318,6 +318,10 @@ public class PrincipalController {
 	        	limpiarCamposA();
 	        }else if(preceder == null && seleccionUltima.equals("No") && seleccionFinal.equals("Si")){
 	        	actividadCreada = modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion);
+	        }else if(preceder == null && seleccionUltima.equals("No")&& seleccionFinal.equals("No")){
+	        	actividadCreada = modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion);
+	        }else if(preceder == null && seleccionUltima.equals("Si")&& seleccionFinal.equals("No")){
+	        	actividadCreada = modelFactoryController.crearActividadFinal(nombreA, descripcion, proceso, seleccion);
 	        }
 			if (actividadCreada) {
 				mostrarMensaje("Notificación creación", "Actividad creada", "Se ha creado con éxito la actividad",
@@ -334,9 +338,6 @@ public class PrincipalController {
 			mostrarMensaje("Notificación creación", "Información inválida", "Información inválida", AlertType.ERROR);
 	    }
 	}
-
-
-	
 
 	private void limpiarCamposA() {
 		tableActividades.refresh();

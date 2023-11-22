@@ -60,17 +60,6 @@ public class Proceso {
 		this.descripcion = descripcion;
 	}
 
-//	public ArrayList<String> obtenerActividades() {
-//		ArrayList<String> listaActividades = new ArrayList <String>();
-//		Nodo<Actividad> actual = actividades.getNodoPrimero();
-//		while (actual != null) {
-//			Actividad actividad = (Actividad) actual.getValorNodo();
-//			listaActividades.add(actividad.getNombre());
-//			actual = actual.getSiguienteNodo();
-//		}
-//		return listaActividades;
-//	}
-	
 	public ArrayList<String> obtenerActividades() {
 		actividades.imprimirLista();
 		ArrayList<String> listaActividades = new ArrayList<String>();
@@ -229,8 +218,14 @@ public class Proceso {
 		if (actividad1 != null && actividad2 != null) {
 
 			Cola<Tarea> tempTareas = actividad1.getTareas();
-			actividad1.setTareas(actividad2.getTareas());
-			actividad2.setTareas(tempTareas);
+			if(actividad1.getTareas()!=null && actividad2.getTareas()!=null){
+				actividad1.setTareas(actividad2.getTareas());
+				actividad2.setTareas(tempTareas);
+			}else{
+				actividad1 = actividad2;
+				actividad2 = actividad1;
+			}
+			
 		}
 	}
 
