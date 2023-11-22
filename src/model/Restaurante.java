@@ -280,7 +280,7 @@ public class Restaurante {
 		while (actual != null) {
 			Proceso proceso = (Proceso) actual.getValorNodo();
 				if(proceso!=null){
-					return proceso.intercambiarAtributis(actividad1, actividad2);
+					return proceso.intercambiarAtributos(actividad1, actividad2);
 				}
 				actual = actual.getSiguienteNodo();
 			}

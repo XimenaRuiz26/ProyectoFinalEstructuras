@@ -229,7 +229,7 @@ public class Proceso {
 		}
 	}
 
-	public boolean intercambiarAtributis(String actividad11, String actividad22) {
+	public boolean intercambiarAtributos(String actividad11, String actividad22) {
 		actividades.imprimirLista();
 		NodoDoble<Actividad> actual = actividades.getNodoPrimero();
 		Actividad actividad1 = null;

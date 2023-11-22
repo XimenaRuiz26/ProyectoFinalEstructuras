@@ -415,6 +415,8 @@ public class PrincipalController {
 		
 		infoActividad1.addAll(modelFactoryController.traerInfoActividad(actividad1));
 		infoActividad2.addAll(modelFactoryController.traerInfoActividad(actividad2));
+		System.out.println(infoActividad1.size());
+		System.out.println(infoActividad2.size());
 		
 		labelNombre1.setText(actividad1);
 		labelDescripcion1.setText(infoActividad1.get(0));

@@ -197,17 +197,17 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <RadioButton fx:id="rBtnSi" layoutX="830.0" layoutY="291.0" mnemonicParsing="false" text="Si">
+                        <RadioButton fx:id="rBtnSi" layoutX="801.0" layoutY="291.0" mnemonicParsing="false" text="Si">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton fx:id="rBtnNo" layoutX="895.0" layoutY="291.0" mnemonicParsing="false" text="No">
+                        <RadioButton fx:id="rBtnNo" layoutX="886.0" layoutY="291.0" mnemonicParsing="false" text="No">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
                         </RadioButton>
-                        <Button fx:id="btnCrearActividad" layoutX="789.0" layoutY="332.0" mnemonicParsing="false" onAction="#crearActividadEvent" prefHeight="38.0" prefWidth="166.0" style="-fx-background-color: #00CC33; -fx-background-radius: 30 30 30 30;" text="Crear actividad" textFill="WHITE">
+                        <Button fx:id="btnCrearActividad" layoutX="776.0" layoutY="343.0" mnemonicParsing="false" onAction="#crearActividadEvent" prefHeight="38.0" prefWidth="166.0" style="-fx-background-color: #00CC33; -fx-background-radius: 30 30 30 30;" text="Crear actividad" textFill="WHITE">
                            <font>
                               <Font name="Tw Cen MT Condensed Extra Bold" size="21.0" />
                            </font>
