@@ -73,6 +73,9 @@ public class PrincipalController {
 
 	@FXML
 	private ImageView flechaRegresar;
+	
+	@FXML
+    private ImageView exportar;
 
 	Proceso procesoSeleccionado;
 
@@ -82,6 +85,11 @@ public class PrincipalController {
 		listaProcesosData.addAll(modelFactoryController.obtenerProcesos());
 		return listaProcesosData;
 	}
+	
+	 @FXML
+	    void exportarEvent(MouseEvent event) {
+
+	    }
 
 	@FXML
 	void crearProcesoEvent(ActionEvent event) {

@@ -95,7 +95,7 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="txtNombreTarea" layoutX="343.0" layoutY="268.0" prefHeight="31.0" prefWidth="281.0" promptText="Recepción de pedidos" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
+                        <TextField fx:id="txtNombreTarea" layoutX="343.0" layoutY="268.0" prefHeight="31.0" prefWidth="281.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
@@ -105,7 +105,7 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="txtDuracionMin" layoutX="203.0" layoutY="385.0" prefHeight="43.0" prefWidth="192.0" promptText="805588" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
+                        <TextField fx:id="txtDuracionMin" layoutX="203.0" layoutY="385.0" prefHeight="43.0" prefWidth="192.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
@@ -115,7 +115,7 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="txtDescripcionTarea" layoutX="369.0" layoutY="331.0" prefHeight="43.0" prefWidth="331.0" promptText="Area encargada" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
+                        <TextField fx:id="txtDescripcionTarea" layoutX="369.0" layoutY="331.0" prefHeight="43.0" prefWidth="331.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
@@ -145,7 +145,7 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="txtPosicion" layoutX="377.0" layoutY="196.0" prefHeight="23.0" prefWidth="47.0" promptText="2" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
+                        <TextField fx:id="txtPosicion" layoutX="377.0" layoutY="196.0" prefHeight="23.0" prefWidth="47.0" style="-fx-background-color: rgba(128, 128, 128, 0.5);">
                            <font>
                               <Font name="Tw Cen MT" size="23.0" />
                            </font>
@@ -218,17 +218,17 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <Label fx:id="labelNombreT" layoutX="426.0" layoutY="351.0" prefHeight="27.0" prefWidth="306.0" text="Realizacion de pedido">
+                        <Label fx:id="labelNombreT" layoutX="426.0" layoutY="351.0" prefHeight="27.0" prefWidth="306.0">
                            <font>
                               <Font name="Tw Cen MT" size="21.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labeObligatoriaT" layoutX="533.0" layoutY="390.0" prefHeight="27.0" prefWidth="95.0" text="si">
+                        <Label fx:id="labeObligatoriaT" layoutX="533.0" layoutY="390.0" prefHeight="27.0" prefWidth="95.0">
                            <font>
                               <Font name="Tw Cen MT" size="21.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelDescripcionT" layoutX="464.0" layoutY="430.0" prefHeight="27.0" prefWidth="489.0" text="Realizar pedido">
+                        <Label fx:id="labelDescripcionT" layoutX="464.0" layoutY="430.0" prefHeight="27.0" prefWidth="489.0">
                            <font>
                               <Font name="Tw Cen MT" size="21.0" />
                            </font>
@@ -243,12 +243,12 @@
                               <Font name="Tw Cen MT" size="24.0" />
                            </font>
                         </Text>
-                        <Label fx:id="labelDuracionMinT" layoutX="510.0" layoutY="473.0" prefHeight="27.0" prefWidth="306.0" text="30 minutos">
+                        <Label fx:id="labelDuracionMinT" layoutX="510.0" layoutY="473.0" prefHeight="27.0" prefWidth="306.0">
                            <font>
                               <Font name="Tw Cen MT" size="21.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelDuracionMaxT" layoutX="518.0" layoutY="512.0" prefHeight="27.0" prefWidth="306.0" text="2 horas">
+                        <Label fx:id="labelDuracionMaxT" layoutX="518.0" layoutY="512.0" prefHeight="27.0" prefWidth="306.0">
                            <font>
                               <Font name="Tw Cen MT" size="21.0" />
                            </font>
